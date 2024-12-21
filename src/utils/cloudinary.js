@@ -25,6 +25,9 @@ cloudinary.config({
 });
 
 
+export {uploadCloudinary}
+
+
 
 
 // (async function() {
