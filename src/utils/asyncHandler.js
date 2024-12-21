@@ -1,21 +1,22 @@
 //using promises
 const asyncHandler= (requestHandler)=>{
-    (req,res,next)=>{
+    return (req,res,next)=>{
        return Promise.resolve(requestHandler(req,res,next)).
        catch((Error)=>next(error)) 
     }
 }
 
+export { asyncHandler}
 
-export{asyncHandler}
 
 
-    // try catch method 
+
+    // try catch method
 // const asyncHandler= (fn)=>(req, res,next)=>{
 //     try {
 //         await fn(req,res,next){}
-        
-//     } catch (error) {
+
+//     } catch (error){
 //         res.status(error || 500).json({
 //             success:false,
 //             message:error.message
@@ -23,8 +24,10 @@ export{asyncHandler}
 //     }
 // }
 
-// const asyncHandler= (fn)=>()=>{}
-// const asyncHandler= (func)=>()=>{}
-// const asyncHandler= (fn)=>async()=>{}
+// export { asyncHandler }
+
+// const asyncHandler = (fn)=>()=>{}
+// const asyncHandler = (func)=>()=>{}
+// const asyncHandler = (fn)=>async()=>{}
 
 
