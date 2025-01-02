@@ -25,7 +25,7 @@ const userSchema = new Schema(
       trim: true,
       index: true,
     },
-    avtar: {
+    avatar: {
       type: String, //cloudinary url
       required: true,
     },
@@ -76,6 +76,8 @@ userSchema.methods.generateAccessToken = function () {
     }
   );
 };
+
+
 userSchema.methods.generateRefreshToken = function () {
     return jwt.sign(
         {
@@ -88,4 +90,4 @@ userSchema.methods.generateRefreshToken = function () {
       );
 };
 
-export const User = mongoose.overwriteMiddlewareResult("User", userSchema);
+export const User = mongoose.model("User", userSchema);

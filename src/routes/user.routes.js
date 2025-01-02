@@ -1,9 +1,11 @@
 import { Router } from "express";
-import { registerUser } from "../controllers/userControl.js";
+import {upload } from "../middlewares/multer.middleware.js"
+// import { registerUser } from "../controllers/userControl.js";
+import {registerUser} from "../controllers/userControl.js"
+
+// import { upload } from "../middlewares/multer.middleware.js";
+
 const router = Router();
-
-import { upload } from "../middleware/multer.middleware.js";
-
 router.route("/register").post(
   upload.fields([
     {
@@ -11,10 +13,14 @@ router.route("/register").post(
       maxCount: 1,
     },
     {
-      name: "cover",
+      name: "coverImage",
       maxCount: 1,
     },
   ]),
+  registerUser
+);
+router.route("/register").get(
+ 
   registerUser
 );
 

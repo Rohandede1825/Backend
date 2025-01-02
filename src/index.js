@@ -1,10 +1,15 @@
 // // require ('dotenv').config({path:'./env'})
 import { app } from "./app.js";
 import dotenv from "dotenv";
+// import multer from "./middleware/multer.middleware.js";
 import connectDB from "./db/db.js";
+// import userData from "./routes/userData.routes.js";
+
+
+
 
     dotenv.config({
-    path: "./env",
+    path: "./.env",
     });
             
     connectDB()
@@ -16,6 +21,7 @@ import connectDB from "./db/db.js";
   .catch((err) => {
     console.log("MONGO db connection failed !!", err);
   });
+
 
 /*
 //ifes
