@@ -21,6 +21,7 @@ import userRouter from './routes/user.routes.js'
 
 //routes declaration 
 app.use("/api/v1/user",userRouter)
+
 app.get("/",(req,res)=>{
     res.send("Hey this is app page")
 })
