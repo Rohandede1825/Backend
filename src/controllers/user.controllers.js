@@ -36,6 +36,7 @@ const generateAccessAndRefereshTokens = async(userId) =>{
     //8 return response
 
 const registerUser= asyncHandler(async (req, res)=>{
+
     //1 get user details form frontend -- done 
     const {fullName, email, username, password}= req.body
     console.log("email",email);
@@ -49,7 +50,7 @@ const registerUser= asyncHandler(async (req, res)=>{
     }
 
     //2.validation -- done 
-    if([fullName,email,username, password].some(()=>field?.trim())){
+    if([fullName,email,username, password].some(()=>field?.trim()==="")){
         throw new ApiError(400,"All fields are required")
     }
 
@@ -77,9 +78,9 @@ const registerUser= asyncHandler(async (req, res)=>{
    if(!avatarLocalPath){
        throw new ApiError(400,"Avatar is required")
    } 
-//    if(!coverImageLocalPath){
-//     throw new ApiError(400,"Cover Image is required")
-//    }
+   if(!coverImageLocalPath){
+    throw new ApiError(400,"Cover Image is required")
+   }
 
     //5 upload them to cloudinary 
     const avatar= await uploadOnCloudinary(avatarLocalPath)

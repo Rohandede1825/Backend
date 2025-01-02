@@ -1,4 +1,5 @@
 import { v2 as cloudinary } from "cloudinary";
+import { response } from "express";
 import fs from "fs";
 
 cloudinary.config({
@@ -19,12 +20,12 @@ const uploadOnCloudinary = async (localFilePath) => {
     // file has been uploaded succesfully
     console.log("File is uploaded on cloudinary", response.url);
 
-    // fs.unlinkSync(localFilePath);
+    fs.unlinkSync(localFilePath);
     return response;
 
   } catch (error) {
     fs.unlinkSync(localFilePath); //remove the locally saved temprery file as the upload operation got failed
-    return null;
+    return response;
   }
 };
 
